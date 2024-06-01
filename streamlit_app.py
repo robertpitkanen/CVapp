@@ -8,8 +8,6 @@ import plotly.graph_objects as go
 
 # Libraries for ChatGPT
 import openai
-import yaml
-
 
 # set page layout to wide
 try:
