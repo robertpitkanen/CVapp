@@ -1,0 +1,251 @@
+
+{
+    "title": {
+        "media": {
+          "url": "", 
+          "caption": "",
+          "credit": ""
+        },
+        "text": {
+          "headline": "MEINE GESCHICHTE BIS JETZT ",
+          "text": "<p>Aufwachsen und die Welt erkunden 🌱 Jeder Schritt, ob gross oder klein, hat mich zu dem gemacht, was ich heute bin.</p>"
+        }
+    },
+    "events": [
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2008",
+          "month": "7"
+        },
+        "text": {
+          "headline": "HALLO WELT!🌍",
+          "text": "<br/><p> Ich hatte meinen grossen Auftritt in Tallinn, Estland. Ich wurde um 2.18 Uhr geboren (2 Minuten vor meinem Zwillingsbruder) und wog etwa 2448 g. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2015",
+          "month": "9"
+        },
+        "text": {
+          "headline": "SCHULANFANG 🎒 ",
+          "text": "<br/><p> Ich habe meinen Bildungsweg (Grundschule) in meiner Heimatstadt Haapsalu, Estland, begonnen. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2015",
+          "month": "12"
+        },
+        "text": {
+          "headline": "🇺🇸 ABENTEUER IN DEN STAATEN",
+          "text": "<br/><p>Chicago, Weihnachten bei der Grossmutter und Freizeitpark in Orlando! </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://www.dropbox.com/scl/fi/f7xzpl886xpmqr0uy4izh/IMG_0353.jpg?rlkey=4l8zk2yf6k0grhyjkj5k74sdd&st=6wz571z9&dl=0",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2017",
+          "month": "8"
+        },
+        "text": {
+          "headline": "🇨🇭 NEUES LAND, NEUE HEIMAT",
+          "text": "<p>Unsere Familie ist in die Schweiz gezogen. Hallo, Winterthur! </p>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://www.dropbox.com/scl/fi/62pnijdhyf7g9hu16vwfe/052bf81d-9f6a-46c4-bbc6-ed9332d05c33.JPG?rlkey=lhhrn22nkesb3sqk4qkfarkeb&dl=0",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2018"
+        },
+        "text": {
+          "headline": "NEUANFANG AN DER SCHULE OBERÄGERI ",
+          "text": "<p>Neue Schule, neue Freunde, neue Erfahrungen. </p>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2019",
+          "month": "8"
+        },
+        "text": {
+          "headline": "🌍 EUROPÄISCHER ENTDECKER ",
+          "text": "<br/><p>Italien, Slowakei und Kroatien, ich komme! </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2019",
+          "month": "12"
+        },
+        "text": {
+          "headline": "🎁 URLAUBSREISEN ",
+          "text": "<br/><p>Eine aufregende Reise durch Frankreich, Luxemburg, Belgien und Amsterdam. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2021",
+          "month": "7"
+        },
+        "text": {
+          "headline": "🚗 ROAD TRIP NACH ESTLAND",
+          "text": "<br/><p>Wir machen uns auf den Weg und besuchen fünf Länder auf einen Schlag: Österreich, Tschechien, Polen, Lettland, Litauen. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2021"
+        },
+        "text": {
+          "headline": "📚 NÄCHSTE STUFE DES LERNENS ",
+          "text": "Beginn der Sekundarschule - neue Herausforderungen, neue Fächer, neue Möglichkeiten. "
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2021",
+          "month": "10"
+        },
+        "text": {
+          "headline": "🥋 MEISTER DER KAMPFKÜNSTE ",
+          "text": "<br/><p>Ich habe meinen ersten gelben Gürtel in Haidong Gumdo bekommen. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2022",
+          "month": "4"
+        },
+        "text": {
+          "headline": " 🕌 MAROKKANISCHE ERINNERUNGEN ",
+          "text": "<br/><p> Den Ramadan in Marokko erleben. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2022",
+          "month": "6"
+        },
+        "text": {
+          "headline": "🥋 Level aufsteigen ",
+          "text": "<br/><p>Orangen Gürtel in Haidong Gumdo erreicht! </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2022",
+          "month": "12"
+        },
+        "text": {
+          "headline": "🍎 DER GROSSE APFEL & GOOGLE ",
+          "text": "<br/><p>Das erste Mal in NYC und ein Besuch im Google-Hauptquartier in Washington DC. </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "https://www.dropbox.com/scl/fi/6hiyth6dnl68xfjm8e62n/IMG_0382.jpg?rlkey=5r34n5g4vxadtjf9zt1vp24bo&dl=0",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2023"
+        },
+        "text": {
+          "headline": "🇫🇷 Bonjour, Saint Raphael!",
+          "text": "Zwei Wochen Französisch Kurse an der Riviera. "
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": "T"
+        },
+        "start_date": {
+          "year": "2023",
+          "month": "10"
+        },
+        "text": {
+          "headline": "🎢 Florida-spass",
+          "text": "<br/><p>Zurück in die Staaten für mehr Freizeitpark-Action! </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2024"
+        },
+        "text": {
+          "headline": "🤝 Schweizer Austausch",
+          "text": "<p>Ich begrüsse einen neuen Freund aus der Westschweiz. </p>"
+        }
+      },
+      {
+        "media": {
+          "url": "",
+          "caption": ""
+        },
+        "start_date": {
+          "year": "2024",
+          "month": "7"
+        },
+        "text": {
+          "headline": "🇫🇷 Parisische Abenteuer",
+          "text": "<br/><p>Französisch lernen in der Stadt der Lichter (demnächst!). </p><br/><a target=\"_blank\" rel=\"noopener\" onclick=\"this.target='_blank'\" href='' ></a>"
+        }
+      }
+    ]
+}
