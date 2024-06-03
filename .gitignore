@@ -6,6 +6,10 @@
 ### dotenv ###
 .env
 
+### yaml files ###
+.yaml
+.yml
+
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/

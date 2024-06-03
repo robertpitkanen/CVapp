@@ -7,7 +7,9 @@ import streamlit.components.v1 as components
 import plotly.graph_objects as go
 
 # Libraries for ChatGPT
-import openai
+from openai import OpenAI
+import os
+import yaml
 
 # set page layout to wide
 try:
@@ -23,7 +25,6 @@ CSS_PATH = 'timeline3/css/timeline.css'
 JS_PATH = 'timeline3/js/timeline.js'
 
 SOURCE_TYPE = 'json' # json or gdocs
-# GDOCS_PATH = 'https://docs.google.com/spreadsheets/u/1/d/1xuY4upIooEeszZ_lCmeNx24eSFWe0rHe9ZdqH2xqVNk/pubhtml' # example url
 JSON_PATH = 'timeline_nlp.json' # example json
 
 # Timeline height
@@ -54,9 +55,7 @@ Hallo 👋 Mein Name ist Robert Pitkänen
 
 🤝 Freiwillige Arbeit im Jugendzentrum: Veranstaltungen organisieren, in der Kiosk helfen usw. 
 
-🗣️ Ich spreche fliessend Englisch, Deutsch und Schweizerdeutsch. Ich lerne auch Französisch! 
-
-⚡ Fun Fact: Ich habe mir Japanisch mit Anime und Videospielen beigebracht. 
+🗣️ Ich spreche fliessend Englisch, Deutsch und Schweizerdeutsch. Ich lerne auch Französisch!  
     """
     )
 
@@ -226,96 +225,89 @@ st.sidebar.divider()
 st.sidebar.header("Persönliche Fähigkeiten ")
 st.sidebar.markdown(
     """ 
-✅ Öffentliches Reden \n
-✅ Kreatives Denken \n
-✅ Problemlösung \n
-✅ Brain Storming 
+✅ Teamfähig \n
+✅ Selbstsicherheit \n
+✅ Schnell lernend \n 
     """
     )
 
 st.sidebar.divider()
 
 # Timeline UI sections
-#data = 'Data'
 code = 'HTML Code'
-line = 'Visualization'
-about = 'About'
-view = st.sidebar.radio("View My Timeline", (line, about), index=0) # code
+line = 'Visualisierung'
+about = 'Über Timeline'
+view = st.sidebar.radio("Timeline", (line, about), index=0) # code
 
 if view == line:
     # render html
     components.html(htmlcode, height=TL_HEIGHT,)
 
-# elif view == data:
-    # st.subheader(data)
-    # json_parsed = json.loads(json_text)
-    # st.write(f"{len(json_parsed['events'])} events")
-
-    # show json
-    # st.json(json_text)
-
-# elif view == code:
-    # st.subheader(code)
-    # st.markdown(htmlcode, unsafe_allow_html=False)
-
 elif view == about:
     st.subheader(about)
-    st.markdown('This Streamlit + TimelineJS demo is created by [Rob van Zoest](https://www.linkedin.com/in/robvanzoest/) from [innerdoc.com](https://www.innerdoc.com/).')
-    st.markdown('The code is available on [github.com/innerdoc](https://github.com/innerdoc/nlp-history-timeline).')
-    st.markdown('With the help of [Streamlit](https://streamlit.io) and [TimelineJS](http://timeline.knightlab.com/) it became a demo timeline about the history of Natural Language Processing!')
-
+    st.markdown('This Streamlit + TimelineJS demo is created by [Rob van Zoest](https://www.linkedin.com/in/robvanzoest/). The code is available on [github.com/innerdoc](https://github.com/innerdoc/nlp-history-timeline).')
 
 # Adding white space between timeline and images
 st.markdown('###')
 
 # Chat
-
 # Function to load the API key from a YAML file
+def load_api_key(filepath):
+    with open(filepath, 'r') as file:
+        config = yaml.safe_load(file)
+        return config['OPENAI_API_KEY']
+
 # Load your OpenAI API key
-OPENAI_API_KEY = ""
+OPENAI_API_KEY = load_api_key('credentials.yaml')
 
 # Create an OpenAI client instance with your API key
-openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
 
-dataframe_context = """
-Hi there! 👋 I'm Robert, a 9th-grader at Schule Oberägeri with a passion for app development 📱.
+context = """
+Hallo! 👋 Ich bin Robert, ein Neuntklässler an der Schule Oberägeri mit einer Leidenschaft für App-Entwicklung 📱.
 
-Here's a quick overview of me:
+Hier ist ein kurzer Überblick über mich:
 
-* **Skills & Interests:**
-    * Aspiring app developer (starting an internship at Lonza AG in August!)
-    * Enjoy volleyball 🏐, playing guitar 🎸, anime, manga, and everything Japanese 🇯🇵
-    * Fluent in English 🇬🇧, German 🇩🇪, and Swiss German 🇨🇭 (learning French 🇫🇷 too!)
-* **Academic Achievements:**
-    * Strong grades in math (4.5 average), Informatik (5.5+ average), and English, German, and Science (5+ average)
-    * High scores on the Multicheck Test (95% berufsspezifische Fähigkeiten, 88% Potenzial, 77% Schulwissen)
-* **Experience:**
-    * Completed Schnupperlehre (internships) in app development (Applikationentwicklung) at several companies (Lonza AG, Landis + Gyr AG, Roche AG, Business Systems Integration AG, Exanic AG)
-    * Explored platform development at Roche AG
-* **Community Involvement:**
-    * Actively volunteer at the local youth center in Ägeri, organizing events, helping out, and connecting with people 🤝
+* **Fähigkeiten & Interessen:**
+    * Angestrebter App-Entwickler (ab August Praktikum bei Lonza AG!)
+    * Geniesse Volleyball 🏐, Gitarre spielen 🎸, Anime, Manga und alles Japanische 🇯🇵
+    * Fliessend in Englisch 🇬🇧, Deutsch 🇩🇪 und Schweizerdeutsch 🇨🇭 (lerne auch Französisch 🇫🇷!)
+* **Akademische Leistungen:**
+    * Gute Noten in Mathematik (Durchschnitt 4.5), Informatik (Durchschnitt 5.5+), und Englisch, Deutsch und Wissenschaft (Durchschnitt 5+)
+    * Hohe Punktzahlen im Multicheck-Test (95% berufsspezifische Fähigkeiten, 88% Potenzial, 77% Schulwissen)
+* **Erfahrung:**
+    * Schnupperlehren in der App-Entwicklung bei mehreren Unternehmen (Lonza AG, Landis + Gyr AG, Roche AG, Business Systems Integration AG, Exanic AG) abgeschlossen
+    * Plattformentwicklung bei Roche AG erkundet
+* **Gemeinschaftliches Engagement:**
+    * Aktiver Freiwilliger im Jugendzentrum in Ägeri, organisiere Veranstaltungen, helfe mit und vernetze mich mit Menschen 🤝
+* **Kenntnisse & Erfahrungen:**
+    * Programmiersprachen: Ich bin ziemlich gut in Python und kenne mich mit HTML und ein bisschen SQL aus.
+    * Praktikum bei Lonza AG: Ich will so viel wie möglich lernen und dem Unternehmen helfen. Ich möchte schnell Programmierkenntnisse erwerben, um für das Team nützlich zu sein.
+    * Schnupperlehre: Ich habe die Grundlagen von Python, SQL und HTML gelernt, was mir eine gute Grundlage gab.
+    * Zukünftige Projekte: Ich bin mir noch nicht sicher, aber ich bin gespannt, an welchen Projekten ich in Zukunft arbeiten kann.
+* **Interessen & Hobbys:**
+    * Anime/Manga: Jujutsu Kaisen und Demon Slayer sind meine Favoriten. Ich mag die Action, die Charaktere und die gesamten Geschichten.
+    * Volleyball & Gitarre: Ich habe mit Volleyball angefangen, nachdem ich den Anime Haikyuu!! gesehen hatte. Es sah nach viel Spaß aus, und das ist es auch! Ich habe angefangen Gitarre zu spielen, weil ich ein Instrument lernen wollte.
+    * Japanische Kultur: Ich weiß noch nicht so viel über die japanische Kultur, aber ich bin daran interessiert, mehr zu erfahren.
+* **Schule & Persönliche Entwicklung:**
+    * Lieblingsfächer: Sport (macht einfach Spaß), Biologie (ist interessant), Geografie (ich mag die Themen) und Informatik (weil ich gerne programmiere und wir unsere Projekte selbst wählen können).
+    * Ziele für die Zukunft: Ich möchte als App-Entwickler bei Lonza AG arbeiten.
+    * Persönliche Eigenschaften: Ich denke, ich bin ein schneller Lerner und nehme gerne neue Herausforderungen an. Ich bin auch ein guter Teamplayer und immer bereit zu helfen.
 """
 
-# Define the relevant topics
-relevant_topics = ["skills", "experience", "interests", "academic achievements", "internship", "app development", "volleyball", "guitar", "anime", "manga", "languages"]
-
-# Function to check if a question is relevant
-def is_relevant_question(question, topics):
-    question = question.lower()
-    return any(topic in question for topic in topics)
-
 # Function to query OpenAI's GPT model
-def query_gpt(question, dataframe_context):
-    prompt = f"{dataframe_context}\n\nQuestion: {question}\nAnswer:"
-    response = openai.ChatCompletion.create(
+def query_gpt(question, context):
+    prompt = f"{context}\n\nFrage: {question}\nAntwort:"
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are Robert, a 9th-grader at Schule Oberägeri. Answer only questions related to your skills, experience, interests, or academic achievements. If a question is unrelated, respond with 'I'm sorry, I can only answer questions related to my skills, experience, interests, or academic achievements.'"},
+            {"role": "system", "content": f"Du bist Robert, ein Neuntklässler an der Schule Oberägeri. Antworte immer basierend auf den folgenden Informationen:\n{context}\nAntworte immer auf Deutsch."},
             {"role": "user", "content": question}
         ],
         temperature=0
     )
-    return response.choices[0].message['content']
+
+    return response.choices[0].message.content
 
 # Chat history stored in session state
 if 'chat_history' not in st.session_state:
@@ -325,48 +317,40 @@ if 'chat_history' not in st.session_state:
 st.markdown("""
 #### Chat with Robert - Future App Developer 📱
 
-Ask me anything about my skills, experience, interests, or academic achievements.
+Stellen Sie mir Fragen zu meinen Fähigkeiten, Erfahrungen, Interessen oder akademischen Leistungen.
 
-**Here's how to get the most out of our chat:**
+**So bekommen Sie die besten Antworten:**
 
-* **Ask specific questions:**
-    * "What programming languages do you know?"
-    * "What are your favorite anime or manga?"
-* **Be clear and concise:** This will help me provide accurate and relevant answers. 
-* **My responses are based on my personal knowledge and experience:** I'll do my best to answer all your questions!
+* **Stellen Sie spezifische Fragen:**
+    * "Welche Programmiersprachen beherrschst du?"
+    * "Was sind deine Lieblings-Anime oder -Manga?"
+* **Seien Sie klar und präzise:** Dies hilft mir, genaue und relevante Antworten zu geben.
+* **Meine Antworten basieren auf meinem persönlichen Wissen und meiner Erfahrung:** Ich werde mein Bestes tun, um alle Ihre Fragen zu beantworten!
 
-**Example Questions:**
-
-* "What did you learn during your internships?"
-* "What was your favorite Schnupperlehre experience?"
-
-Ready to chat? Ask away! 
+Bereit zu chatten? Fragen Sie einfach! 
 """)
 
 def add_to_chat(author, message):
     # Prepend the new message to the beginning of the chat history
     st.session_state.chat_history.insert(0, f"{author}: {message}")
 
-user_message = st.text_input("Your question:", key="user_query")
+user_message = st.text_input("Ihre Frage:", key="user_query")
 
-col1, col2, col3 = st.columns([1, 1, 2])
+col1, col2 = st.columns(2)
 with col1:
     # Handling the chat interaction
-    if st.button("Ask"):
+    if st.button("Fragen"):
         if user_message:
             # Add user message to chat
-            add_to_chat("You", user_message)
-            if is_relevant_question(user_message, relevant_topics):
-                # Use the general summary for every query
-                response = query_gpt(user_message, dataframe_context)
-            else:
-                response = "I'm sorry, I can only answer questions related to my skills, experience, interests, or academic achievements."
+            add_to_chat("Sie", user_message)
+            # Use the general summary for every query
+            response = query_gpt(user_message, context)
             add_to_chat("Bot", response)
         else:
-            st.warning("Please enter a question.")
+            st.warning("Bitte geben Sie eine Frage ein.")
 with col2:
     # Optionally, you might want to clear the chat
-    if st.button("Clear"):
+    if st.button("Leeren"):
         st.session_state.chat_history = []
 
 for chat in st.session_state.chat_history:
