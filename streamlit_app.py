@@ -131,7 +131,7 @@ with col1:
         btn1 = st.download_button(
             label="Lade mein Lebenslauf herunter",
             data=file,
-            file_name="CV_Robert.pdf",
+            file_name="Lebenslauf_Robert_Pitkanen.pdf",
             mime="file/pdf"
           )
 with col2:  
