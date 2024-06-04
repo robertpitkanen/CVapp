@@ -6,10 +6,6 @@ import streamlit.components.v1 as components
 # Graphs
 import plotly.graph_objects as go
 
-# Libraries for ChatGPT
-# from openai import OpenAI
-# import os
-# import yaml
 
 # set page layout to wide
 try:
@@ -249,112 +245,6 @@ elif view == about:
 
 # Adding white space between timeline and images
 st.markdown('###')
-
-# Chat
-# Function to load the API key from a YAML file
-# def load_api_key(filepath):
-    # with open(filepath, 'r') as file:
-        # config = yaml.safe_load(file)
-        # return config['OPENAI_API_KEY']
-
-# Load your OpenAI API key
-# OPENAI_API_KEY = load_api_key('credentials.yaml')
-
-# Create an OpenAI client instance with your API key
-# client = OpenAI(api_key=OPENAI_API_KEY)
-
-context = """
-Hallo! 👋 Ich bin Robert, ein Neuntklässler an der Schule Oberägeri mit einer Leidenschaft für App-Entwicklung 📱.
-
-Hier ist ein kurzer Überblick über mich:
-
-* **Fähigkeiten & Interessen:**
-    * Angestrebter App-Entwickler (ab August Praktikum bei Lonza AG!)
-    * Geniesse Volleyball 🏐, Gitarre spielen 🎸, Anime, Manga und alles Japanische 🇯🇵
-    * Fliessend in Englisch 🇬🇧, Deutsch 🇩🇪 und Schweizerdeutsch 🇨🇭 (lerne auch Französisch 🇫🇷!)
-* **Akademische Leistungen:**
-    * Gute Noten in Mathematik (Durchschnitt 4.5), Informatik (Durchschnitt 5.5+), und Englisch, Deutsch und Wissenschaft (Durchschnitt 5+)
-    * Hohe Punktzahlen im Multicheck-Test (95% berufsspezifische Fähigkeiten, 88% Potenzial, 77% Schulwissen)
-* **Erfahrung:**
-    * Schnupperlehren in der App-Entwicklung bei mehreren Unternehmen (Lonza AG, Landis + Gyr AG, Roche AG, Business Systems Integration AG, Exanic AG) abgeschlossen
-    * Plattformentwicklung bei Roche AG erkundet
-* **Gemeinschaftliches Engagement:**
-    * Aktiver Freiwilliger im Jugendzentrum in Ägeri, organisiere Veranstaltungen, helfe mit und vernetze mich mit Menschen 🤝
-* **Kenntnisse & Erfahrungen:**
-    * Programmiersprachen: Ich bin ziemlich gut in Python und kenne mich mit HTML und ein bisschen SQL aus.
-    * Praktikum bei Lonza AG: Ich will so viel wie möglich lernen und dem Unternehmen helfen. Ich möchte schnell Programmierkenntnisse erwerben, um für das Team nützlich zu sein.
-    * Schnupperlehre: Ich habe die Grundlagen von Python, SQL und HTML gelernt, was mir eine gute Grundlage gab.
-    * Zukünftige Projekte: Ich bin mir noch nicht sicher, aber ich bin gespannt, an welchen Projekten ich in Zukunft arbeiten kann.
-* **Interessen & Hobbys:**
-    * Anime/Manga: Jujutsu Kaisen und Demon Slayer sind meine Favoriten. Ich mag die Action, die Charaktere und die gesamten Geschichten.
-    * Volleyball & Gitarre: Ich habe mit Volleyball angefangen, nachdem ich den Anime Haikyuu!! gesehen hatte. Es sah nach viel Spaß aus, und das ist es auch! Ich habe angefangen Gitarre zu spielen, weil ich ein Instrument lernen wollte.
-    * Japanische Kultur: Ich weiß noch nicht so viel über die japanische Kultur, aber ich bin daran interessiert, mehr zu erfahren.
-* **Schule & Persönliche Entwicklung:**
-    * Lieblingsfächer: Sport (macht einfach Spaß), Biologie (ist interessant), Geografie (ich mag die Themen) und Informatik (weil ich gerne programmiere und wir unsere Projekte selbst wählen können).
-    * Ziele für die Zukunft: Ich möchte als App-Entwickler bei Lonza AG arbeiten.
-    * Persönliche Eigenschaften: Ich denke, ich bin ein schneller Lerner und nehme gerne neue Herausforderungen an. Ich bin auch ein guter Teamplayer und immer bereit zu helfen.
-"""
-
-# Function to query OpenAI's GPT model
-def query_gpt(question, context):
-    prompt = f"{context}\n\nFrage: {question}\nAntwort:"
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": f"Du bist Robert, ein Neuntklässler an der Schule Oberägeri. Antworte immer basierend auf den folgenden Informationen:\n{context}\nAntworte immer auf Deutsch."},
-            {"role": "user", "content": question}
-        ],
-        temperature=0
-    )
-
-    return response.choices[0].message.content
-
-# Chat history stored in session state
-# if 'chat_history' not in st.session_state:
-    # st.session_state.chat_history = []
-
-# Chat UI in the main page
-# st.markdown("""
-# #### Chat with Robert - Future App Developer 📱
-
-# Stellen Sie mir Fragen zu meinen Fähigkeiten, Erfahrungen, Interessen oder akademischen Leistungen.
-
-# **So bekommen Sie die besten Antworten:**
-
-# * **Stellen Sie spezifische Fragen:**
-    # * "Welche Programmiersprachen beherrschst du?"
-    # * "Was sind deine Lieblings-Anime oder -Manga?"
-# * **Seien Sie klar und präzise:** Dies hilft mir, genaue und relevante Antworten zu geben.
-# * **Meine Antworten basieren auf meinem persönlichen Wissen und meiner Erfahrung:** Ich werde mein Bestes tun, um alle Ihre Fragen zu beantworten!
-
-# Bereit zu chatten? Fragen Sie einfach! 
-# """)
-
-# def add_to_chat(author, message):
-    # Prepend the new message to the beginning of the chat history
-    # st.session_state.chat_history.insert(0, f"{author}: {message}")
-
-# user_message = st.text_input("Ihre Frage:", key="user_query")
-
-# col1, col2 = st.columns(2)
-# with col1:
-    # Handling the chat interaction
-    if st.button("Fragen"):
-        if user_message:
-            # Add user message to chat
-            add_to_chat("Sie", user_message)
-            # Use the general summary for every query
-            response = query_gpt(user_message, context)
-            add_to_chat("Bot", response)
-        else:
-            st.warning("Bitte geben Sie eine Frage ein.")
-# with col2:
-    # Optionally, you might want to clear the chat
-    if st.button("Leeren"):
-        st.session_state.chat_history = []
-
-# for chat in st.session_state.chat_history:
-    st.text(chat)
      
 # Adding white space between timeline and images
 st.markdown('###')
