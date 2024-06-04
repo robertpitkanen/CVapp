@@ -264,4 +264,4 @@ with col2:
 
 with col3:
     st.image('pictures/IMG_3389.jpg')
-    # st.image('pictures/robert_orlando.jpg')
+    st.image('pictures/IMG_3077.jpg')
