@@ -127,7 +127,7 @@ col1, col2, col3 = st.columns([1, 1, 2])
 
 # Buttons to download my CV and contact me
 with col1:
-    with open("pictures/CV_Robert.pdf", "rb") as file:
+    with open("pictures/Lebenslauf_Robert_Pitkanen.pdf", "rb") as file:
         btn1 = st.download_button(
             label="Lade mein Lebenslauf herunter",
             data=file,
