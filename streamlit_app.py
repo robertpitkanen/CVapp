@@ -7,9 +7,9 @@ import streamlit.components.v1 as components
 import plotly.graph_objects as go
 
 # Libraries for ChatGPT
-from openai import OpenAI
-import os
-import yaml
+# from openai import OpenAI
+# import os
+# import yaml
 
 # set page layout to wide
 try:
@@ -252,16 +252,16 @@ st.markdown('###')
 
 # Chat
 # Function to load the API key from a YAML file
-def load_api_key(filepath):
-    with open(filepath, 'r') as file:
-        config = yaml.safe_load(file)
-        return config['OPENAI_API_KEY']
+# def load_api_key(filepath):
+    # with open(filepath, 'r') as file:
+        # config = yaml.safe_load(file)
+        # return config['OPENAI_API_KEY']
 
 # Load your OpenAI API key
-OPENAI_API_KEY = load_api_key('credentials.yaml')
+# OPENAI_API_KEY = load_api_key('credentials.yaml')
 
 # Create an OpenAI client instance with your API key
-client = OpenAI(api_key=OPENAI_API_KEY)
+# client = OpenAI(api_key=OPENAI_API_KEY)
 
 context = """
 Hallo! 👋 Ich bin Robert, ein Neuntklässler an der Schule Oberägeri mit einer Leidenschaft für App-Entwicklung 📱.
@@ -310,34 +310,34 @@ def query_gpt(question, context):
     return response.choices[0].message.content
 
 # Chat history stored in session state
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
+# if 'chat_history' not in st.session_state:
+    # st.session_state.chat_history = []
 
 # Chat UI in the main page
-st.markdown("""
-#### Chat with Robert - Future App Developer 📱
+# st.markdown("""
+# #### Chat with Robert - Future App Developer 📱
 
-Stellen Sie mir Fragen zu meinen Fähigkeiten, Erfahrungen, Interessen oder akademischen Leistungen.
+# Stellen Sie mir Fragen zu meinen Fähigkeiten, Erfahrungen, Interessen oder akademischen Leistungen.
 
-**So bekommen Sie die besten Antworten:**
+# **So bekommen Sie die besten Antworten:**
 
-* **Stellen Sie spezifische Fragen:**
-    * "Welche Programmiersprachen beherrschst du?"
-    * "Was sind deine Lieblings-Anime oder -Manga?"
-* **Seien Sie klar und präzise:** Dies hilft mir, genaue und relevante Antworten zu geben.
-* **Meine Antworten basieren auf meinem persönlichen Wissen und meiner Erfahrung:** Ich werde mein Bestes tun, um alle Ihre Fragen zu beantworten!
+# * **Stellen Sie spezifische Fragen:**
+    # * "Welche Programmiersprachen beherrschst du?"
+    # * "Was sind deine Lieblings-Anime oder -Manga?"
+# * **Seien Sie klar und präzise:** Dies hilft mir, genaue und relevante Antworten zu geben.
+# * **Meine Antworten basieren auf meinem persönlichen Wissen und meiner Erfahrung:** Ich werde mein Bestes tun, um alle Ihre Fragen zu beantworten!
 
-Bereit zu chatten? Fragen Sie einfach! 
-""")
+# Bereit zu chatten? Fragen Sie einfach! 
+# """)
 
-def add_to_chat(author, message):
+# def add_to_chat(author, message):
     # Prepend the new message to the beginning of the chat history
-    st.session_state.chat_history.insert(0, f"{author}: {message}")
+    # st.session_state.chat_history.insert(0, f"{author}: {message}")
 
-user_message = st.text_input("Ihre Frage:", key="user_query")
+# user_message = st.text_input("Ihre Frage:", key="user_query")
 
-col1, col2 = st.columns(2)
-with col1:
+# col1, col2 = st.columns(2)
+# with col1:
     # Handling the chat interaction
     if st.button("Fragen"):
         if user_message:
@@ -348,12 +348,12 @@ with col1:
             add_to_chat("Bot", response)
         else:
             st.warning("Bitte geben Sie eine Frage ein.")
-with col2:
+# with col2:
     # Optionally, you might want to clear the chat
     if st.button("Leeren"):
         st.session_state.chat_history = []
 
-for chat in st.session_state.chat_history:
+# for chat in st.session_state.chat_history:
     st.text(chat)
      
 # Adding white space between timeline and images
