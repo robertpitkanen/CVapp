@@ -7,8 +7,8 @@
 .env
 
 ### yaml files ###
-.yaml
-.yml
+*.yaml
+*.yml
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks

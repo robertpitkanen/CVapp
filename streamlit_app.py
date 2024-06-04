@@ -258,7 +258,7 @@ def load_api_key(filepath):
         return config['OPENAI_API_KEY']
 
 # Load your OpenAI API key
-OPENAI_API_KEY = load_api_key('')
+OPENAI_API_KEY = load_api_key('credentials.yaml')
 
 # Create an OpenAI client instance with your API key
 client = OpenAI(api_key=OPENAI_API_KEY)
